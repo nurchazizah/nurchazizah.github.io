@@ -1,0 +1,126 @@
+---
+title: "Pengaruh Jumlah Penduduk Miskin Terhadap Angka Harapan Hidup Perempuan Indonesia Tahun 2022"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Nur Chazizah"
+date: 2024-01-20
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![](poltekapp.jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Angka harapan hidup (AHH) merupakan salah satu indikator penting dalam pembangunan kesehatan. AHH menunjukkan rata-rata lama hidup seseorang yang lahir di suatu tahun tertentu. Peningkatan AHH mencerminkan perbaikan status kesehatan masyarakat secara keseluruhan.
+
+Kemiskinan merupakan salah satu faktor yang dapat memengaruhi AHH. Kemiskinan dapat meningkatkan risiko terpapar faktor risiko kesehatan seperti gizi buruk, sanitasi buruk, akses layanan kesehatan terbatas, dan stres, yang pada akhirnya berdampak pada AHH.
+
+Perempuan dan anak-anak merupakan kelompok rentan yang seringkali paling terdampak oleh kemiskinan. Ketimpangan gender dan diskriminasi juga dapat memperparah dampak kemiskinan terhadap kesehatan dan harapan hidup perempuan.
+
+### Ruang lingkup
+
+Ruang lingkup pembahasan masalah pada penelitian ini mengandung variabel mengenai jumlah Penduduk Miskin Terhadap Angka Harapan Hidup Perempuan pada tahun 2022. Peran dari batasan masalah ini, yaitu membantu mengidentifikasi masalah yang akan diuraikan dan membatasi jangkauan proses yang diuraikan.
+
+### Rumusan masalah
+
+1.  Apakah Jumlah Kemiskinan Penduduk berpengaruh terhadap Angka Harapan Hidup Perempuan?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan dari penelitian ini untuk mengetahui pengaruh dari Jumlah Penduduk Miskin di Indonesia dan tahun terkait terhadap Angka Harapan Hidup Perempuan dan tahun terkait.
+
+Manfaat yang diberikan ke masyarakat terhadap penelitian ini, yaitu masyarakat dapat mengetahui Pengaruh Jumlah Penduduk Miskin di Indonesia dan tahun terkait terhadap Angka Harapan Hidup Perempuan dan tahun terkait.
+
+### Package
+
+Ini tidak wajib ada di tulisan anda tapi anda dapat menunjukkan Packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+library("tidyverse")
+library("readxl")
+library("dplyr")
+```
+
+## Studi pustaka
+
+Penelitian-penelitian terdahulu menunjukkan adanya hubungan negatif antara jumlah penduduk miskin dan AHH perempuan. Semakin tinggi jumlah penduduk miskin, semakin rendah AHH perempuan.
+
+Sebuah studi yang dilakukan oleh World Bank (2018) menunjukkan bahwa peningkatan 1% jumlah penduduk miskin di suatu negara akan menurunkan AHH perempuan sebesar 0,04 tahun. Studi lain yang dilakukan oleh United Nations Development Programme (UNDP) (2019) menunjukkan bahwa di negara-negara berkembang, AHH perempuan rata-rata 5 tahun lebih rendah di daerah yang rawan kemiskinan dibandingkan dengan daerah yang tidak rawan kemiskinan.
+
+## Metode penelitian
+
+### Data
+
+Berikut merupakan data yang digunakan sebagai objek penelitian. Data ini meliputi Angka Harapan Hidup Perempuan di Indonesia tahun 2022 dan Data Angka Jumlah Penduduk Miskin di Indonesia tahun 2023.
+
+![](AHHP data.JPG)
+
+![](JPM dat.JPG)
+
+Penelitian ini menggunakan Angka Harapan Hidup Perempuan di Indonesia tahun 2022 dan Data Jumlah Penduduk Miskin di Indonesia tahun 2023 dari Badan Pusat Statistik (BPS).
+
+Baca data
+
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('dat.xlsx')
+head(dat)
+```
+
+```{r}
+library("ggplot2")
+library("readxl")
+library("dplyr")
+ggplot(data=dat,aes(x=AHHP,y=JPM))+
+  geom_point(color="blue",size=2)+
+  labs(title="tabel 1. Hubungan antara Angka Harapan Hidup Perempuan dan Jumlah Penduduk Miskin",
+      x="Angka Harapan Hidup Perempuan",
+      y="Jumlah Penduduk Miskin",
+      caption = "sumber : Badan Pusat Statistik")+
+   theme_classic()
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini bermaksud mencari hubungan antara Jumlah Penduduk Miskin (JPM) dan Angka Harapan Hidup Perempuan (AHHP). Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah AHHP dan $x_t$ adalah JPM.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Dikarenakan peneliti menggunakan OLS, maka fokus yang akan dibahas hanya mengaitkan Angka Harapan Hidup Perempuan dan Jumlah Penduduk Miskin. Data tersebut disatukan sehingga menampilkan regresi seperti ini.
+
+```{r}
+#import dataset
+library(readxl)
+dat<-read_excel('dat.xlsx')
+head(dat)
+```
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+reg1<-lm(AHHP~JPM,data=dat)
+summary(reg1)
+```
+
+## Kesimpulan
+
+Ada hubungan negatif yang kuat antara jumlah penduduk miskin dan angka harapan hidup (AHH) perempuan. Semakin tinggi tingkat kemiskinan, semakin rendah AHH perempuan.
+
+## Referensi
+
+Badan Pusat Statistik. (n.d). Retrieved January 20, 2024, from https://www.bps.go.id/id/statistics-table/2/MTkylzl=/persentase-penduduk-miskin--maret-2023.html
+
+Badan Pusat Statistik. (n.d). Retrieved January 20,2024, from https://www.bps.go.id/id/statistics-table/2/NTAxlzl=/angka-harapan-hidup-ahh-menurut-provinsi-dan-jenis-kelamin.html
